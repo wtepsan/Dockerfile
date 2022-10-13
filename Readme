@@ -1,0 +1,59 @@
+## Create New Image
+#1 Create Dockerfile
+
+#2 Run code create docker image
+# docker build -t imageName:tagName .
+# For example 
+docker build -t ubuntu_pytorch_cuda .
+docker build -t ubuntu_pythorch:7pmJune29 .
+docker build -t tutu:cuda .
+docker build -t ubuntu_pytorch_torchlight_lightgbm .
+
+#3 Push into docker hub
+## 3.1 Re-tagging an existing local image 
+docker tag <existing-image> <hub-user>/<repo-name>[:<tag>
+# For example 
+docker tag ubuntu_pythorch:7pmJune29 wtepsan/wtepsan:ubuntu_pytorch_pytorch
+docker tag ubuntu20.04torchlight:latest wtepsan/wtepsan:ubuntu20.04torchlight
+docker tag ubuntu_pytorch_torchlight_lightgbm:latest wtepsan/wtepsan:ubuntu20.04torchlight_lightgbm
+docker tag ubuntu_pytorch_cuda:latest wtepsan/wtepsan:ubuntu_pytorch_cuda_cv2
+docker tag ubuntu_pytorch_cuda_cv2:latest wtepsan/wtepsan:ubuntu_pytorch_cuda_cv2
+
+## 3.2 Push
+docker push <hub-user>/<repo-name>:<tag>
+# For example 
+docker push wtepsan/wtepsan:ubuntu_pytorch_pytorch
+docker push wtepsan/wtepsan:ubuntu20.04torchlight
+docker push wtepsan/wtepsan:ubuntu20.04torchlight_lightgbm
+docker push wtepsan/wtepsan:ubuntu_pytorch_cuda_cv2
+
+
+#4 Pull from docker hub
+## Case 1: Docker pull 
+docker pull [OPTIONS] NAME[:TAG|@DIGEST]
+
+## Case 2: Singurality Pull
+singularity pull <singularity_name>.sif docker://<pull command url> 
+# For example 
+singularity pull ubuntu_python.sif docker://wtepsan/wtepsan:ubuntu_python 
+singularity pull ubuntu20torchlight.sif docker://wtepsan/wtepsan:ubuntu20.04torchlight
+
+
+#5 Run Containter
+## Case 1: Docker
+sudo docker run -it --name=runrunrun -v /home/wtepsan/"Project HAR"/docker_data:/data mytwotooto
+# For example 
+sudo docker -it mytwotooto
+
+## Case 2: Singularity
+### Case 2.1  without mounting folders
+singularity exec ubuntu_python.sif
+singularity shell ubuntu_python.sif
+
+#### Case 2.1: with mounting folders
+singularity shell -B /tarafs/data/project/proj0173-action/Dataset/NTU-RGBD/skeletons:/skeletondata -B /tarafs/data/project/proj0173-action/wtepsan:/wtepsan docker_test/ubuntu_python_pandas.sif
+
+### OTHERS DOCKER COMMANDS ###
+docker images
+
+
