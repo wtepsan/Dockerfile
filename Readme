@@ -56,6 +56,5 @@ singularity shell ubuntu_python.sif
 singularity shell -B /tarafs/data/project/proj0173-action/Dataset/NTU-RGBD/skeletons:/skeletondata -B /tarafs/data/project/proj0173-action/wtepsan:/wtepsan docker_test/ubuntu_python_pandas.sif
 
 ### OTHERS DOCKER COMMANDS ###
-docker images
 
 
