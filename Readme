@@ -1,4 +1,6 @@
 ## This docker file is for running my experiments!!!
+## And can be pulled from "wtepsan/wtepsan:ubuntu_pytorch_cuda_cv2"
+
 
 ## Create New Image
 #1 Create Dockerfile
